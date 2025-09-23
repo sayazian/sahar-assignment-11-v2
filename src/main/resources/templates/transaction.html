@@ -1,0 +1,29 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Online Bank</title>
+    <link rel="stylesheet" href="/css/transactions.css"/>
+</head>
+<body>
+<h2>
+    <div style="width: 500px;">
+        <div style="float: left; margin-right: 10px; ">Transaction ID: [[${transaction.id}]]</div>
+        <div style="float: left; " th:if="${transaction.type == 'D'}">(Debit)</div>
+        <div style="float: left;" th:if="${transaction.type == 'C'}">(Credit)</div>
+        <br style="clear: left;"/>
+    </div>
+</h2>
+
+<div style="width: 500px; font size = 20px">
+    <div style="float: left; margin-right: 10px; ">Date: [[${transaction.date}]]</div>
+    <br>
+    <div style="float: left; margin-right: 10px;" th:if="${transaction.type == 'C'}">Amount: -[[${transaction.amount}]]</div>
+    <div style="float: left; margin-right: 10px;" th:if="${transaction.type == 'D'}">Amount: [[${transaction.amount}]]</div>
+<br>
+    <div style="float: left; margin-right: 10px;">Description: [[${transaction.description}]]</div>
+    <br style="clear: left;"/>
+</div>
+
+<br>
+<a th:href="@{/transactions}">back</a>
+</body>
+</html>
