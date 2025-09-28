@@ -15,16 +15,13 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public List<Transaction> loadTimeSortedTransactions() {
+    public List<Transaction> findAll() {
         List<Transaction> transactionList = transactionRepository.findAll();
         transactionList.sort(comparing(Transaction::getDate));
         return transactionList;
     }
 
     public Transaction findById(Integer transactionId) {
-        return transactionRepository.findAll()
-                .stream()
-                .filter(transaction -> Math.toIntExact(transaction.getId()) == transactionId)
-                .findFirst().get();
+        return transactionRepository.findById(transactionId);
     }
 }

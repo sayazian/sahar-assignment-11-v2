@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Online Bank</title>
     <link rel="stylesheet" href="/css/transactions.css"/>
@@ -13,7 +13,7 @@
     </div>
 </h2>
 
-<div style="width: 500px; font size = 20px">
+<div style="width: 500px; font-size = 20px">
     <div style="float: left; margin-right: 10px; ">Date: [[${transaction.date}]]</div>
     <br>
     <div style="float: left; margin-right: 10px;" th:if="${transaction.type == 'C'}">Amount: -[[${transaction.amount}]]</div>

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -47,5 +48,12 @@ public class TransactionRepository {
 			e.printStackTrace();
 		} 
 		
+	}
+
+	public Transaction findById(Integer transactionId) {
+		return findAll().stream()
+				.filter(transaction -> Math.toIntExact(transaction.getId()) == transactionId)
+				.findFirst()
+				.orElse(null);
 	}
 }

@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Online Bank</title>
 	<link rel="stylesheet" href="/css/transactions.css"/>
@@ -14,16 +14,12 @@
 		<th>Funds In</th>
 		<th>Funds Out</th>
 	</tr>
-	<!-- These 4 rows below are for demonstration purposes only
-         You will need to edit the code below in order to make
-         it dynamically list ALL 100 transactions from the Repo -->
 	<tr th:each="transactionRecord : ${transactionList}">
 		<td><a th:href="@{/transactions/{transactionRecordId}(transactionRecordId = ${transactionRecord.id})}">[[${transactionRecord.id}]]</a></td>
 		<td th:text="${transactionRecord.date}"></td>
 		<td th:text="${transactionRecord.retailer}"></td>
-		<td th:if="${transactionRecord.type == 'C'}">[[${transactionRecord.amount}]]</td>
-		<td th:if="${transactionRecord.type != 'C'}"></td>
-		<td th:if="${transactionRecord.type == 'D'}">[[${transactionRecord.amount}]]</td>
+		<td th:text="${transactionRecord.type == 'C'} ? ${transactionRecord.amount} : ''"></td>
+		<td th:text="${transactionRecord.type == 'D'} ? ${transactionRecord.amount} : ''"></td>
 		<td th:if="${transactionRecord.type != 'D'}"></td>
 	</tr>
 </table>
